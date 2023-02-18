@@ -1,41 +1,65 @@
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { InputForm } from "../InputForm";
-import { FormShipping } from "./styled";
+import { AdressFormContainer } from "./styled";
+
+interface ErrorType {
+  [key: string]: {
+    message: string;
+  };
+}
 
 export function AdressForm() {
-  const { register, handleSubmit } = useForm();
+  const { register, formState } = useFormContext();
+
+  const { errors } = formState as { errors: ErrorType };
   return (
-    <FormShipping
-      className="form"
-      onSubmit={handleSubmit((data) => console.log(data))}
-    >
+    <AdressFormContainer>
       <InputForm
-        placeholder="CEP"
+        error={errors.cep?.message}
+        placeholder="CEP*"
         className="cepInput"
         type="text"
-        name="cep"
+        {...register("cep")}
       />
       <InputForm
-        placeholder="Rua"
+        error={errors.street?.message}
+        placeholder="Rua*"
         className="streetInput"
         type="text"
-        name="street"
+        {...register("street")}
       />
-      <InputForm type="number" name="number" placeholder="Número" />
+      <InputForm
+        error={errors.street?.message}
+        type="text"
+        placeholder="Número*"
+        {...register("number", { valueAsNumber: true })}
+      />
       <InputForm
         className="complementInput"
         type="text"
-        name="complement"
         placeholder="Complemento"
+        {...register("complement")}
       />
-      <InputForm type="text" name="neighborhood" placeholder="Bairro" />
       <InputForm
+        error={errors.neighborhood?.message}
+        type="text"
+        placeholder="Bairro*"
+        {...register("neighborhood")}
+      />
+      <InputForm
+        error={errors.city?.message}
         className="cityInput"
         type="text"
-        name="city"
-        placeholder="Cidade"
+        placeholder="Cidade*"
+        {...register("city")}
       />
-      <InputForm className="ufInput" type="text" name="uf" placeholder="UF" />
-    </FormShipping>
+      <InputForm
+        error={errors.uf?.message}
+        className="ufInput"
+        type="text"
+        placeholder="UF*"
+        {...register("uf")}
+      />
+    </AdressFormContainer>
   );
 }

@@ -10,7 +10,7 @@ export const ButtonOfPaymentContainer = styled.div`
   border-radius: 0.6rem;
   border: 1px solid transparent;
   transition: 0.3s;
-  flex: 1;
+  user-select: none;
 
   span {
     font-size: 1.2rem;
@@ -18,13 +18,27 @@ export const ButtonOfPaymentContainer = styled.div`
     color: ${(props) => props.theme["base-text"]};
   }
 
-  :hover {
+  &:hover {
+    background-color: ${(props) => props.theme["purple-light"]};
     cursor: pointer;
-    background-color: ${(props) => props.theme["base-hover"]};
+  }
+`;
+
+export const MethodPaymentContainer = styled.div`
+  flex: 1;
+
+  input {
+    visibility: hidden;
+    appearance: none;
   }
 
-  :active {
+  input:checked + label > div {
     background-color: ${(props) => props.theme["purple-light"]};
-    border: 1px solid ${(props) => props.theme["purple"]};
+    border-color: ${(props) => props.theme["purple"]};
+
+    &:hover {
+      background-color: ${(props) => props.theme["purple-light"]};
+      cursor: pointer;
+    }
   }
 `;

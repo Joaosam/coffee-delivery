@@ -1,8 +1,15 @@
-import { InputHTMLAttributes } from "react";
-import { InputStyledContainer } from "./styled";
+import { forwardRef, InputHTMLAttributes } from "react";
+import { InputStyledContainer, WrapperInputForm } from "./styled";
 
-type InputFormProps = InputHTMLAttributes<HTMLInputElement>;
+type InputFormProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string;
+};
 
-export function InputForm({ ...props }: InputFormProps) {
-  return <InputStyledContainer {...props} />;
-}
+export const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
+  ({ error, ...props }, ref) => (
+    <WrapperInputForm>
+      <InputStyledContainer error={!!error} ref={ref} {...props} />
+      {error && <p>{error}</p>}
+    </WrapperInputForm>
+  )
+);

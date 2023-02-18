@@ -4,11 +4,6 @@ export const CheckoutContainer = styled.div`
   display: flex;
   gap: 3.2rem;
   padding: 4rem 6.4rem;
-
-  .ola {
-    width: 44.8rem;
-    background-color: red;
-  }
 `;
 
 export const ContainerPayment = styled.div`

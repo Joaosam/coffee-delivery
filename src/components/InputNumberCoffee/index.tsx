@@ -8,9 +8,15 @@ interface InputNumberCoffeeProps {
   id: number;
   name: string;
   image: string;
+  price: number;
 }
 
-export function InputNumberCoffe({ id, name, image }: InputNumberCoffeeProps) {
+export function InputNumberCoffe({
+  id,
+  name,
+  image,
+  price,
+}: InputNumberCoffeeProps) {
   const {
     totalProducts,
     handleAddProductToCart,
@@ -33,6 +39,10 @@ export function InputNumberCoffe({ id, name, image }: InputNumberCoffeeProps) {
     });
   }, [totalProducts]);
 
+  function handleChange(event: any) {
+    setQuantityCoffee(event.target.value);
+  }
+
   return (
     <Wrapper>
       <Minus
@@ -40,9 +50,9 @@ export function InputNumberCoffe({ id, name, image }: InputNumberCoffeeProps) {
         className="minus"
         onClick={() => handleDecreasesCartProducts(id)}
       />
-      <input type="text" value={quantityCoffee} />
+      <input type="text" value={quantityCoffee} onChange={handleChange} />
       <Plus
-        onClick={() => handleAddProductToCart(id, name, image)}
+        onClick={() => handleAddProductToCart(id, name, image, price)}
         size={14}
         className="plus"
       />

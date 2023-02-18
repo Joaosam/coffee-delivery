@@ -3,6 +3,8 @@ import { Router } from "../Router";
 import { BuyContextProvider } from "./contexts/BuyContext";
 import { GlobalStyle } from "./styles/global";
 import { themeDefault } from "./styles/themes/default";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export function App() {
   return (
@@ -11,6 +13,7 @@ export function App() {
       <BuyContextProvider>
         <Router />
       </BuyContextProvider>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

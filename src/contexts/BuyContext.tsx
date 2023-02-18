@@ -1,10 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, useCallback, useState } from "react";
 import data from ".././components/Home/data.json";
 
 interface BuyContextData {
@@ -14,23 +8,18 @@ interface BuyContextData {
   handleAddProductToCart: (
     currentId: number,
     currentName: string,
-    currentImage: string
+    currentImage: string,
+    currentPrice: number
   ) => void;
   handleDecreasesCartProducts: (currentId: number) => void;
   handleRemoveCartProducts: (currentId: number) => void;
-}
-
-interface Tag {
-  id: number;
-  name: string;
+  handleRemoveCartProductsFromCheckout: (currentId: number) => void;
 }
 
 interface Coffee {
   id: number;
   name: string;
-  description?: string;
-  tags?: Tag[];
-  price?: number;
+  price: number;
   image: string;
   quantity: number;
 }
@@ -43,7 +32,12 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
   const isIdInTheProducts = totalProducts.map((item) => item.id);
 
   const handleAddProductToCart = useCallback(
-    (currentId: number, currentName: string, currentImage: string) => {
+    (
+      currentId: number,
+      currentName: string,
+      currentImage: string,
+      currentPrice: number
+    ) => {
       if (
         totalProducts.length === 0 ||
         !isIdInTheProducts.includes(currentId)
@@ -54,6 +48,7 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
             id: currentId,
             name: currentName,
             image: currentImage,
+            price: currentPrice,
             quantity: 1,
           },
         ]);
@@ -102,6 +97,19 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
     [totalProducts]
   );
 
+  const handleRemoveCartProductsFromCheckout = useCallback(
+    (currentId: number) => {
+      totalProducts.map((item) => {
+        if (item.id === currentId) {
+          setTotalProducts(
+            totalProducts.filter((item) => item.id !== currentId)
+          );
+        }
+      });
+    },
+    [totalProducts]
+  );
+
   return (
     <BuyContext.Provider
       value={{
@@ -111,6 +119,7 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
         handleAddProductToCart,
         handleDecreasesCartProducts,
         handleRemoveCartProducts,
+        handleRemoveCartProductsFromCheckout,
       }}
     >
       {children}

@@ -14,10 +14,11 @@ import {
   WrapperListCoffe,
 } from "./styled";
 import { CircleWavyWarning, ShoppingCart } from "phosphor-react";
-import { InputNumberCoffe } from "../../../InputNumberCoffe";
+
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BuyContext } from "../../../../contexts/BuyContext";
+import { InputNumberCoffe } from "../../../InputNumberCoffee";
 
 export function CoffeList() {
   const { data } = useContext(BuyContext);
@@ -111,6 +112,7 @@ export function CoffeList() {
                       id={coffee.id}
                       name={coffee.name}
                       image={coffee.image}
+                      price={coffee.price}
                     />
                     <NavLink to="/checkout">
                       <Cart>
