@@ -1,16 +1,16 @@
 import * as yup from "yup";
 
-const cepRegex = /^\d{5}-\d{3}$/;
-
 export const schema = yup.object().shape({
-  cep: yup
-    .string()
-    .required("Campo obrigatório")
-    .matches(cepRegex, "CEP inválido"),
-  street: yup.string().required("Campo obrigatório"),
-  number: yup.number().required("Campo obrigatório"),
-  neighborhood: yup.string().required("Campo obrigatório"),
+  cep: yup.string().required(),
+  street: yup.string().required(),
+  number: yup
+    .number()
+    .min(1, "O número deve ser maior que 0!")
+    .required("Número é um campo obrigatório!")
+    .typeError("Preencha o campo número corretamente!"),
+  neighborhood: yup.string().required(),
   complement: yup.string(),
-  city: yup.string().required("Campo obrigatório"),
-  uf: yup.string().required("Campo obrigatório").max(2, "UF inválido"),
+  city: yup.string().required(),
+  uf: yup.string().required(),
+  methodPayment: yup.string().required("Selecione um método de pagamento!"),
 });

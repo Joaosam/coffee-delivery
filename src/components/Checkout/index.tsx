@@ -12,16 +12,20 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
+  Warning,
 } from "phosphor-react";
 import { AdressForm } from "./components/AdressForm";
 import { SectionTitle } from "./components/SectionTitle";
 import { ButtonOfPayment } from "./components/ButtonOfPayment";
 import { SelectedCoffees } from "./components/SelectedCoffees";
-import { toast } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
 import { FormProvider } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { schema } from "./validator";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext, useEffect } from "react";
+import { BuyContext } from "../../contexts/BuyContext";
+import { useNavigate } from "react-router-dom";
 
 export interface InputsType {
   cep: string;
@@ -30,11 +34,21 @@ export interface InputsType {
   complement: string;
   city: string;
   uf: string;
+  methodPayment: string;
 }
 
 export function Checkout() {
   const formAdress = useForm<InputsType>({ resolver: yupResolver(schema) });
-  const { handleSubmit, reset } = formAdress;
+  const {
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = formAdress;
+  const { totalProducts, setTotalProducts } = useContext(BuyContext);
+  const isMethodPaymentError = errors?.methodPayment?.message;
+  const isCepError = errors?.cep;
+  const isNumberError = errors?.number;
+  const navigate = useNavigate();
 
   const dataButtonOfPayment = {
     credit: {
@@ -54,16 +68,40 @@ export function Checkout() {
     },
   };
 
+  const toastOptions: ToastOptions = {
+    style: { fontSize: "1.4rem" },
+    theme: "light",
+    autoClose: 2000,
+  };
+  const toastOptionsWarning: ToastOptions = {
+    style: { fontSize: "1.4rem" },
+    progressStyle: { background: "#c47f17" },
+    icon: <Warning weight="fill" size={22} color="#c47f17" />,
+    autoClose: 2000,
+  };
+
+  useEffect(() => {
+    if (isCepError && isNumberError) {
+      toast.error("Preencha os campos obrigatórios!", toastOptions);
+    } else if (!isCepError && isNumberError) {
+      toast.error(errors.number?.message, toastOptions);
+    } else if (isMethodPaymentError) {
+      toast.warning(errors.methodPayment?.message, toastOptionsWarning);
+    }
+  }, [errors]);
+
   function onSubmit(data: InputsType) {
-    console.log(data);
     setTimeout(() => {
-      toast.success("Pedido confirmado", {
-        style: { fontSize: "1.6rem" },
-        theme: "light",
-        autoClose: 1500,
-      });
-      reset();
-    }, 300);
+      toast.success("Pedido finalizado com sucesso!", toastOptions);
+    }, 100);
+
+    reset();
+    setTotalProducts(totalProducts.filter((state) => state.id !== state.id));
+    navigate("/orderConfirmed", {
+      state: {
+        data,
+      },
+    });
   }
 
   return (

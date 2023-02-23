@@ -59,3 +59,16 @@ export const TotalValuesCurrentCoffee = styled.div`
     font-size: 1.6rem;
   }
 `;
+
+export const EmptyCart = styled.div`
+  width: 36.8rem;
+  height: 8.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid ${(props) => props.theme["yellow-dark"]};
+  border-radius: 6px;
+
+  a {
+    font-size: 1.4rem;
+  }
+`;

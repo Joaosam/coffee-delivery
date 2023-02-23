@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface InputStyledContainerProps {
+export interface InputStyledContainerProps {
   error?: boolean;
 }
 
@@ -26,11 +26,8 @@ export const InputStyledContainer = styled.input<InputStyledContainerProps>`
   ::placeholder {
     color: ${(props) => props.theme["base-label"]};
   }
-`;
 
-export const WrapperInputForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  color: ${(props) => props.theme["red"]};
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;

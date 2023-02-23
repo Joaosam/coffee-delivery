@@ -1,16 +1,16 @@
-import { MapPin, ShoppingCart } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
 import logo from "../../assets/Logo.svg";
 import {
   BtnContainer,
   Cart,
   CartNotification,
   HeaderContainer,
-  Location,
   NavBar,
 } from "./style";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { BuyContext } from "../../contexts/BuyContext";
+import { GetLocalization } from "./components/GetLocalization";
 
 export function Header() {
   const { totalProducts } = useContext(BuyContext);
@@ -26,10 +26,7 @@ export function Header() {
           <img src={logo} alt="Logo Coffe Delivery" />
         </NavLink>
         <BtnContainer>
-          <Location>
-            <MapPin weight="fill" size={22} />
-            <span>São Paulo, SP</span>
-          </Location>
+          <GetLocalization />
           <NavLink to="/checkout">
             <Cart>
               {totalProducts.length !== 0 && (
@@ -37,7 +34,6 @@ export function Header() {
                   <span>{totalQuantity}</span>
                 </CartNotification>
               )}
-
               <ShoppingCart weight="fill" size={22} />
             </Cart>
           </NavLink>

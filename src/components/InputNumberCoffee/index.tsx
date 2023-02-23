@@ -39,10 +39,6 @@ export function InputNumberCoffe({
     });
   }, [totalProducts]);
 
-  function handleChange(event: any) {
-    setQuantityCoffee(event.target.value);
-  }
-
   return (
     <Wrapper>
       <Minus
@@ -50,7 +46,11 @@ export function InputNumberCoffe({
         className="minus"
         onClick={() => handleDecreasesCartProducts(id)}
       />
-      <input type="text" value={quantityCoffee} onChange={handleChange} />
+      <input
+        type="text"
+        value={quantityCoffee}
+        onChange={(e) => e.target.value}
+      />
       <Plus
         onClick={() => handleAddProductToCart(id, name, image, price)}
         size={14}

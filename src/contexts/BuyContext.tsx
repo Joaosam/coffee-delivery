@@ -4,7 +4,17 @@ import data from ".././components/Home/data.json";
 interface BuyContextData {
   totalProducts: Coffee[];
   data: typeof data;
+  currentIP: string;
+  ipCity: string;
+  ipRegion: string;
+  loading: boolean;
+  methodPaymentSelected: boolean;
   setTotalProducts: (coffee: Coffee[]) => void;
+  setCurrentIP: (ip: string) => void;
+  setIpCity: (city: string) => void;
+  setIpRegion: (region: string) => void;
+  setLoading: (loading: boolean) => void;
+  setMethodPaymentSelected: (selected: boolean) => void;
   handleAddProductToCart: (
     currentId: number,
     currentName: string,
@@ -28,8 +38,14 @@ export const BuyContext = createContext({} as BuyContextData);
 
 export function BuyContextProvider({ children }: { children: ReactNode }) {
   const [totalProducts, setTotalProducts] = useState<Coffee[]>([]);
-
   const isIdInTheProducts = totalProducts.map((item) => item.id);
+
+  const [methodPaymentSelected, setMethodPaymentSelected] = useState(false);
+
+  const [currentIP, setCurrentIP] = useState("");
+  const [ipCity, setIpCity] = useState("");
+  const [ipRegion, setIpRegion] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAddProductToCart = useCallback(
     (
@@ -115,7 +131,17 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
       value={{
         data,
         totalProducts,
+        currentIP,
+        ipCity,
+        ipRegion,
+        loading,
+        methodPaymentSelected,
         setTotalProducts,
+        setCurrentIP,
+        setIpCity,
+        setIpRegion,
+        setLoading,
+        setMethodPaymentSelected,
         handleAddProductToCart,
         handleDecreasesCartProducts,
         handleRemoveCartProducts,
