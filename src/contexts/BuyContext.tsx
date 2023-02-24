@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useCallback, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import data from ".././components/Home/data.json";
 
 interface BuyContextData {
@@ -8,12 +14,14 @@ interface BuyContextData {
   ipCity: string;
   ipRegion: string;
   loading: boolean;
+  theme: boolean;
   methodPaymentSelected: boolean;
   setTotalProducts: (coffee: Coffee[]) => void;
   setCurrentIP: (ip: string) => void;
   setIpCity: (city: string) => void;
   setIpRegion: (region: string) => void;
   setLoading: (loading: boolean) => void;
+  onSetTheme: (theme: boolean) => void;
   setMethodPaymentSelected: (selected: boolean) => void;
   handleAddProductToCart: (
     currentId: number,
@@ -34,10 +42,26 @@ interface Coffee {
   quantity: number;
 }
 
+interface BuyContextProviderProps {
+  children: ReactNode;
+  theme: boolean;
+  onSetTheme: (theme: boolean) => void;
+}
+
 export const BuyContext = createContext({} as BuyContextData);
 
-export function BuyContextProvider({ children }: { children: ReactNode }) {
-  const [totalProducts, setTotalProducts] = useState<Coffee[]>([]);
+export function BuyContextProvider({
+  children,
+  theme,
+  onSetTheme,
+}: BuyContextProviderProps) {
+  function loadProductsFromStorage() {
+    const productsStorage = localStorage.getItem("@Coffee-Delivery:Products");
+    return productsStorage && JSON.parse(productsStorage);
+  }
+  const [totalProducts, setTotalProducts] = useState<Coffee[]>(
+    loadProductsFromStorage() || []
+  );
   const isIdInTheProducts = totalProducts.map((item) => item.id);
 
   const [methodPaymentSelected, setMethodPaymentSelected] = useState(false);
@@ -46,6 +70,18 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
   const [ipCity, setIpCity] = useState("");
   const [ipRegion, setIpRegion] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "@Coffee-Delivery:Products",
+      JSON.stringify(totalProducts)
+    );
+  }, [totalProducts]);
+
+  useEffect(() => {
+    const themeStorage = localStorage.getItem("@Coffee-Delivery:DefaultTheme");
+    themeStorage && onSetTheme(JSON.parse(themeStorage));
+  }, []);
 
   const handleAddProductToCart = useCallback(
     (
@@ -135,12 +171,14 @@ export function BuyContextProvider({ children }: { children: ReactNode }) {
         ipCity,
         ipRegion,
         loading,
+        theme,
         methodPaymentSelected,
         setTotalProducts,
         setCurrentIP,
         setIpCity,
         setIpRegion,
         setLoading,
+        onSetTheme,
         setMethodPaymentSelected,
         handleAddProductToCart,
         handleDecreasesCartProducts,

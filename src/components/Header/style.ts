@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   padding: 2.4rem 6.4rem;
   width: 100%;
-  background: ${(props) => props.theme["white"]};
 `;
 
 export const NavBar = styled.nav`

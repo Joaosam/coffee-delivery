@@ -19,6 +19,7 @@ export const Title = styled.div`
     font-family: "Baloo 2", cursive;
     font-weight: 800;
     font-size: 3.2rem;
+    color: ${(props) => props.theme["base-subtitle"]};
   }
 `;
 
@@ -104,6 +105,7 @@ export const ContainerDescription = styled.div`
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 0.8rem;
+    color: ${(props) => props.theme["base-subtitle"]};
   }
 
   .description {

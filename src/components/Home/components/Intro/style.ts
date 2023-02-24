@@ -22,6 +22,7 @@ export const ContainerDescrition = styled.div`
     font-weight: 800;
     line-height: 6.24rem;
     margin-bottom: 1.6rem;
+    color: ${(props) => props.theme["base-title"]};
   }
 
   h3 {
@@ -29,6 +30,7 @@ export const ContainerDescrition = styled.div`
     line-height: 2.6rem;
     font-weight: 400;
     margin-bottom: 6.6rem;
+    color: ${(props) => props.theme["base-subtitle"]};
   }
 `;
 
@@ -61,6 +63,7 @@ export const DetailsDescription = styled.div`
     display: flex;
     align-items: center;
     gap: 1.2rem;
+    color: ${(props) => props.theme["base-text"]};
   }
 
   span {

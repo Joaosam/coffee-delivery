@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   max-width: 7.2rem;
 
   input {
+    color: ${(props) => props.theme["base-text"]};
     text-align: center;
     border: none;
     background-color: transparent;

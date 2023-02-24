@@ -16,7 +16,9 @@ export function GetLocalization() {
     currentIP,
     ipCity,
     ipRegion,
+    theme,
   } = useContext(BuyContext);
+
   useEffect(() => {
     axios.get(`https://api.ipify.org?format=json`).then((response) => {
       setCurrentIP(response.data.ip);
@@ -32,8 +34,9 @@ export function GetLocalization() {
             setIpRegion(response.data.region);
             toast.success("Localização detectada com sucesso!", {
               style: { fontSize: "1.4rem" },
-              progressStyle: { background: "#4b2995" },
-              icon: <CheckCircle weight="fill" size={22} color="#4b2995" />,
+              theme: theme ? "light" : "dark",
+              progressStyle: { background: "#8047f8" },
+              icon: <CheckCircle weight="fill" size={22} color="#8047f8" />,
               autoClose: 2000,
             });
           } else {
@@ -41,6 +44,7 @@ export function GetLocalization() {
             setIpRegion("SP");
             toast.error("Erro ao detectar localização!", {
               style: { fontSize: "1.4rem" },
+              theme: !theme ? "light" : "dark",
               autoClose: 2000,
             });
           }

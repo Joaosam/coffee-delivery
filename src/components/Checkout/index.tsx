@@ -44,7 +44,7 @@ export function Checkout() {
     reset,
     formState: { errors },
   } = formAdress;
-  const { totalProducts, setTotalProducts } = useContext(BuyContext);
+  const { totalProducts, setTotalProducts, theme } = useContext(BuyContext);
   const isMethodPaymentError = errors?.methodPayment?.message;
   const isCepError = errors?.cep;
   const isNumberError = errors?.number;
@@ -70,11 +70,12 @@ export function Checkout() {
 
   const toastOptions: ToastOptions = {
     style: { fontSize: "1.4rem" },
-    theme: "light",
+    theme: theme ? "light" : "dark",
     autoClose: 2000,
   };
   const toastOptionsWarning: ToastOptions = {
     style: { fontSize: "1.4rem" },
+    theme: theme ? "light" : "dark",
     progressStyle: { background: "#c47f17" },
     icon: <Warning weight="fill" size={22} color="#c47f17" />,
     autoClose: 2000,
