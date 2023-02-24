@@ -1,6 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { useLocation } from "react-router-dom";
-import illustration from "../../assets/illustration.svg";
+import illustration from "../../../../assets/illustration.svg";
 import {
   DisplayContentDetails,
   ImgIllustration,
