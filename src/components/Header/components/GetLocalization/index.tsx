@@ -5,7 +5,6 @@ import { BuyContext } from "../../../../contexts/BuyContext";
 import { CheckCircle, MapPin } from "phosphor-react";
 import { BounceLoader } from "react-spinners";
 import { Location } from "./styled";
-import { apiKey } from "./apikey";
 
 export function GetLocalization() {
   const {
@@ -19,6 +18,7 @@ export function GetLocalization() {
     ipRegion,
     theme,
   } = useContext(BuyContext);
+  const apiKey = process.env.IP_GEOLOCALIZATION_KEY;
 
   useEffect(() => {
     axios.get(`https://api.ipify.org?format=json`).then((response) => {
