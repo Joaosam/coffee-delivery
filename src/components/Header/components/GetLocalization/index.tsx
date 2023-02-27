@@ -5,6 +5,7 @@ import { BuyContext } from "../../../../contexts/BuyContext";
 import { CheckCircle, MapPin } from "phosphor-react";
 import { BounceLoader } from "react-spinners";
 import { Location } from "./styled";
+import { apiKey } from "./apikey";
 
 export function GetLocalization() {
   const {
@@ -27,27 +28,28 @@ export function GetLocalization() {
     setLoading(!loading);
     setTimeout(() => {
       axios
-        .get(`http://ip-api.com/json/${currentIP}`)
+        .get(
+          `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${currentIP}`
+        )
         .then((response) => {
-          if (response.data.status === "success") {
-            setIpCity(response.data.city);
-            setIpRegion(response.data.region);
-            toast.success("Localização detectada com sucesso!", {
-              style: { fontSize: "1.4rem" },
-              theme: theme ? "light" : "dark",
-              progressStyle: { background: "#8047f8" },
-              icon: <CheckCircle weight="fill" size={22} color="#8047f8" />,
-              autoClose: 2000,
-            });
-          } else {
-            setIpCity("São Paulo");
-            setIpRegion("SP");
-            toast.error("Erro ao detectar localização!", {
-              style: { fontSize: "1.4rem" },
-              theme: !theme ? "light" : "dark",
-              autoClose: 2000,
-            });
-          }
+          setIpCity(response.data.city);
+          setIpRegion(response.data.country_code2);
+          toast.success("Localização detectada com sucesso!", {
+            style: { fontSize: "1.4rem" },
+            theme: theme ? "light" : "dark",
+            progressStyle: { background: "#8047f8" },
+            icon: <CheckCircle weight="fill" size={22} color="#8047f8" />,
+            autoClose: 2000,
+          });
+        })
+        .catch(() => {
+          setIpCity("São Paulo");
+          setIpRegion("SP");
+          toast.error("Erro ao detectar localização!", {
+            style: { fontSize: "1.4rem" },
+            theme: theme ? "light" : "dark",
+            autoClose: 2000,
+          });
         })
         .finally(() => {
           setLoading(loading);
