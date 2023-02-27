@@ -1,6 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { useLocation } from "react-router-dom";
-import illustration from "../../../../assets/illustration.svg";
+
 import {
   DisplayContentDetails,
   ImgIllustration,
@@ -53,7 +53,7 @@ export function OrderConfirmed() {
           </DisplayContentDetails>
         </OrderDetails>
         <ImgIllustration
-          src={illustration}
+          src="../assets/illustration.svg"
           alt="Ilustratção de um homem em uma moto simulando um entrega"
         />
       </OrderConfirmedContent>
