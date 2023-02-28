@@ -26,35 +26,35 @@ export function GetLocalization() {
     });
 
     setLoading(!loading);
-    setTimeout(() => {
-      axios
-        .get(
-          `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${currentIP}`
-        )
-        .then((response) => {
-          setIpCity(response.data.city);
-          setIpRegion(response.data.country_code2);
-          toast.success("Localização detectada com sucesso!", {
-            style: { fontSize: "1.4rem" },
-            theme: theme ? "light" : "dark",
-            progressStyle: { background: "#8047f8" },
-            icon: <CheckCircle weight="fill" size={22} color="#8047f8" />,
-            autoClose: 2000,
-          });
-        })
-        .catch(() => {
-          setIpCity("São Paulo");
-          setIpRegion("SP");
-          toast.error("Erro ao detectar localização!", {
-            style: { fontSize: "1.4rem" },
-            theme: theme ? "light" : "dark",
-            autoClose: 2000,
-          });
-        })
-        .finally(() => {
-          setLoading(loading);
-        });
-    }, 2500);
+    // setTimeout(() => {
+    //   axios
+    //     .get(
+    //       `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${currentIP}`
+    //     )
+    //     .then((response) => {
+    //       setIpCity(response.data.city);
+    //       setIpRegion(response.data.country_code2);
+    //       toast.success("Localização detectada com sucesso!", {
+    //         style: { fontSize: "1.4rem" },
+    //         theme: theme ? "light" : "dark",
+    //         progressStyle: { background: "#8047f8" },
+    //         icon: <CheckCircle weight="fill" size={22} color="#8047f8" />,
+    //         autoClose: 2000,
+    //       });
+    //     })
+    //     .catch(() => {
+    //       setIpCity("São Paulo");
+    //       setIpRegion("SP");
+    //       toast.error("Erro ao detectar localização!", {
+    //         style: { fontSize: "1.4rem" },
+    //         theme: theme ? "light" : "dark",
+    //         autoClose: 2000,
+    //       });
+    //     })
+    //     .finally(() => {
+    //       setLoading(loading);
+    //     });
+    // }, 2500);
   }, []);
 
   return (

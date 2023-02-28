@@ -1,5 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
-import logo from "../../assets/Logo.svg";
+import logo from "../../../public/assets/Logo.svg";
 import {
   BtnContainer,
   Cart,

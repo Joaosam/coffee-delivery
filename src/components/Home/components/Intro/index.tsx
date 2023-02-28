@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import imageHome from "../../../../assets/Imagem.svg";
+import imageHome from "../../../../../public/assets/Imagem.svg";
 import {
   AboutSection,
   ContainerDescrition,
