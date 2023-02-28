@@ -9,4 +9,5 @@ export const Location = styled.div`
   background-color: ${(props) => props.theme["purple-light"]};
   color: ${(props) => props.theme["purple"]};
   font-size: 1.4rem;
+  cursor: default;
 `;

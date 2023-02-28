@@ -53,7 +53,7 @@ export function OrderConfirmed() {
           </DisplayContentDetails>
         </OrderDetails>
         <ImgIllustration
-          src="../assets/illustration.svg"
+          src="../public/assets/illustration.svg"
           alt="Ilustratção de um homem em uma moto simulando um entrega"
         />
       </OrderConfirmedContent>

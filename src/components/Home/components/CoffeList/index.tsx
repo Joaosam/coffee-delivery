@@ -83,7 +83,7 @@ export function CoffeList() {
               <li>
                 <div className="wrapperImg">
                   <img
-                    src={`./public/assets/${coffee.image}`}
+                    src={`./assets/${coffee.image}`}
                     alt={`Ilustração do ${coffee.name}`}
                   />
                 </div>
