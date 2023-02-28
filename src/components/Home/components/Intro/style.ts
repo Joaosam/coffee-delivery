@@ -12,7 +12,7 @@ export const AboutSection = styled.section`
   align-items: center;
   gap: 5.6rem;
   padding: 9.4rem 6.4rem;
-  background: url("/src/assets/Background.svg");
+  background: url("./assets/Background.svg");
 `;
 
 export const ContainerDescrition = styled.div`
