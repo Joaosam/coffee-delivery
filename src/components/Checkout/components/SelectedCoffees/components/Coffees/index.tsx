@@ -44,7 +44,7 @@ export function Coffees() {
           .sort((a, b) => a.id - b.id)
           .map((product) => (
             <CoffeesContainer key={product.id}>
-              <img src={`../public/assets/${product.image}`} alt="Café" />
+              <img src={`./assets/${product.image}`} alt="Café" />
               <DescribeCoffees>
                 <span>{product.name}</span>
                 <InputsContainer>
