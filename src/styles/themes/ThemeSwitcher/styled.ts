@@ -11,11 +11,12 @@ export const ThemeSwitcherContainer = styled.div`
   @media (max-width: 1024px) {
     position: absolute;
     top: 15%;
-    right: 4rem;
+    right: 3rem;
     z-index: 10;
   }
 
   @media (min-width: 1440px) {
-    top: 2.5%;
+    top: 3.25%;
+    right: 25rem;
   }
 `;

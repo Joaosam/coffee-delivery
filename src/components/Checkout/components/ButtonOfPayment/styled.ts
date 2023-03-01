@@ -13,7 +13,7 @@ export const ButtonOfPaymentContainer = styled.div`
   user-select: none;
 
   span {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     color: ${(props) => props.theme["base-text"]};
   }
@@ -21,6 +21,14 @@ export const ButtonOfPaymentContainer = styled.div`
   &:hover {
     background-color: ${(props) => props.theme["purple-light"]};
     cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0.8rem;
+    height: 4.2rem;
+    span {
+      font-size: 0.9rem;
+    }
   }
 `;
 

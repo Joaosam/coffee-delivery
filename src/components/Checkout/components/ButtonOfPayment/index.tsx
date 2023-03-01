@@ -1,6 +1,5 @@
 import { ButtonOfPaymentContainer, MethodPaymentContainer } from "./styled";
 import { useFormContext } from "react-hook-form";
-import { toast } from "react-toastify";
 
 interface ButtonOfPaymentProps {
   icon: React.ReactNode;

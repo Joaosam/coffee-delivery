@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   padding: 2.4rem 6.4rem;
   width: 100%;
+
+  @media (max-width: 1024px) {
+    padding: 2.4rem 3rem;
+    img {
+      width: 90%;
+    }
+  }
 `;
 
 export const NavBar = styled.nav`

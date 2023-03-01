@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const SelectedCoffeesContainer = styled.section`
+  width: 50%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
   .containerCoffees {
     display: flex;
     flex-direction: column;
@@ -8,6 +13,10 @@ export const SelectedCoffeesContainer = styled.section`
     padding: 4rem;
     background-color: ${(props) => props.theme["base-card"]};
     border-radius: 6px 44px;
+
+    @media (max-width: 1024px) {
+      padding: 2rem;
+    }
   }
   h2 {
     font-size: 1.8rem;

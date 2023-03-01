@@ -24,6 +24,7 @@ export function App() {
       JSON.stringify(!theme)
     );
   }
+
   return (
     <ThemeProvider theme={theme ? themeDefault : themeDark}>
       <GlobalStyle />
@@ -33,7 +34,7 @@ export function App() {
       <BuyContextProvider theme={theme} onSetTheme={setTheme}>
         <Router />
       </BuyContextProvider>
-      <ToastContainer />
+      <ToastContainer className="myCustomToast" />
     </ThemeProvider>
   );
 }

@@ -6,12 +6,20 @@ interface ListFilterProps {
 
 export const CoffeListContainer = styled.section`
   padding: 3.2rem 6.4rem;
+
+  @media (max-width: 1024px) {
+    padding-inline: 3rem;
+  }
 `;
 
 export const CoffeListHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.div`
@@ -20,15 +28,26 @@ export const Title = styled.div`
     font-weight: 800;
     font-size: 3.2rem;
     color: ${(props) => props.theme["base-subtitle"]};
+
+    @media (max-width: 1024px) {
+      font-size: 2.4rem;
+    }
   }
 `;
 
 export const TagsCoffe = styled.div`
   display: flex;
   gap: 0.8rem;
+
+  @media (max-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.2rem;
+    row-gap: 1.6rem;
+  }
 `;
 
-export const WrapperList = styled.div`
+export const WrapperList = styled.ul`
   list-style: none;
 `;
 
@@ -51,6 +70,12 @@ export const ListFilter = styled.li<ListFilterProps>`
       !props.active && props.theme["yellow-light"]};
     border-color: ${(props) => !props.active && props.theme["yellow-light"]};
   }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    padding: 0.6rem;
+  }
 `;
 
 export const ListCoffeContainer = styled.div`
@@ -58,6 +83,10 @@ export const ListCoffeContainer = styled.div`
   gap: 3.2rem;
   flex-wrap: wrap;
   margin-top: 3.4rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 export const WrapperListCoffe = styled.ul`
@@ -113,6 +142,10 @@ export const ContainerDescription = styled.div`
     justify-content: center;
     width: 21.6rem;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
   }
 
   span {

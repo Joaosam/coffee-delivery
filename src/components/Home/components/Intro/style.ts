@@ -13,6 +13,11 @@ export const AboutSection = styled.section`
   gap: 5.6rem;
   padding: 9.4rem 6.4rem;
   background: url("./assets/Background.svg");
+
+  @media (max-width: 1024px) {
+    padding-inline: 3rem;
+    gap: 0;
+  }
 `;
 
 export const ContainerDescrition = styled.div`
@@ -31,6 +36,18 @@ export const ContainerDescrition = styled.div`
     font-weight: 400;
     margin-bottom: 6.6rem;
     color: ${(props) => props.theme["base-subtitle"]};
+  }
+
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 3.6rem;
+      line-height: 4.2rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+    }
   }
 `;
 
@@ -69,10 +86,20 @@ export const DetailsDescription = styled.div`
   span {
     font-size: 1.6rem;
   }
+
+  @media (max-width: 1024px) {
+    span {
+      font-size: 1.4rem;
+    }
+  }
 `;
 
 export const IlustrationCoffe = styled.div`
   img {
     width: 47.6rem;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 `;

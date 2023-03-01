@@ -29,11 +29,11 @@ export function GetLocalization() {
     setTimeout(() => {
       axios
         .get(
-          `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${currentIP}`
+          `https://geo.ipify.org/api/v2/country?apiKey=${apiKey}&ipAddress=${currentIP}`
         )
         .then((response) => {
-          setIpCity(response.data.city);
-          setIpRegion(response.data.country_code2);
+          setIpCity(response.data.location.region);
+          setIpRegion(response.data.location.country);
           toast.success("Localização detectada com sucesso!", {
             style: { fontSize: "1.4rem" },
             theme: theme ? "light" : "dark",
@@ -54,7 +54,7 @@ export function GetLocalization() {
         .finally(() => {
           setLoading(loading);
         });
-    }, 2500);
+    }, 1500);
   }, []);
 
   return (

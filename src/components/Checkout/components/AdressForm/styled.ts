@@ -8,8 +8,7 @@ export const AdressFormContainer = styled.div`
   row-gap: 1.6rem;
 
   .cepInput {
-    grid-column: span 3;
-    width: 40%;
+    grid-column: span 1;
   }
   .streetInput {
     grid-column: span 3;

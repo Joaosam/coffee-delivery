@@ -11,6 +11,18 @@ export const CoffeesContainer = styled.div`
   img {
     width: 6.4rem;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+
+    img {
+      width: 4.8rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: 100%;
+  }
 `;
 
 export const DescribeCoffees = styled.div`
@@ -70,5 +82,13 @@ export const EmptyCart = styled.div`
 
   a {
     font-size: 1.4rem;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (min-width: 1440px) {
+    width: 100%;
   }
 `;

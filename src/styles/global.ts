@@ -19,4 +19,12 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         background-color: ${(props) => props.theme.background};
     }
+
+    .myCustomToast {
+        @media (max-width: 1024px) {
+            width: 70%;
+            right: 0;
+            left: auto;
+        }
+    }
     `;

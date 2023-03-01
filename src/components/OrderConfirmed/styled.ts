@@ -7,6 +7,10 @@ interface DisplayContentDetailsProps {
 
 export const OrderConfirmedContainer = styled.div`
   padding: 8rem 6.4rem;
+
+  @media (max-width: 1024px) {
+    padding-inline: 2rem;
+  }
 `;
 
 export const Title = styled.div`
@@ -20,6 +24,16 @@ export const Title = styled.div`
   p {
     color: ${(props) => props.theme["base-subtitle"]};
     font-size: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    h2 {
+      font-size: 2.4rem;
+    }
+    p {
+      font-size: 1.6rem;
+      width: 80%;
+    }
   }
 `;
 
@@ -47,6 +61,11 @@ export const OrderDetails = styled.div`
     border-radius: 7px 37px;
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 2rem;
+  }
 `;
 
 export const DisplayContentDetails = styled.div<DisplayContentDetailsProps>`
@@ -72,4 +91,12 @@ export const DisplayContentDetails = styled.div<DisplayContentDetailsProps>`
 
 export const ImgIllustration = styled.img`
   width: 49.2rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  @media (min-width: 1440px) {
+    width: 70rem;
+  }
 `;

@@ -10,4 +10,8 @@ export const Location = styled.div`
   color: ${(props) => props.theme["purple"]};
   font-size: 1.4rem;
   cursor: default;
+
+  @media (max-width: 1024px) {
+    width: 72%;
+  }
 `;
