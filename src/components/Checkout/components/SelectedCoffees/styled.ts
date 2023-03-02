@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SelectedCoffeesContainer = styled.section`
-  width: 50%;
+  width: 40%;
   @media (max-width: 1024px) {
     width: 100%;
   }

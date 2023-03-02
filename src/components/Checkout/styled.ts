@@ -19,7 +19,7 @@ export const ContainerPayment = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: 50%;
+  width: 60%;
 
   @media (max-width: 1024px) {
     width: 100%;

@@ -79,16 +79,9 @@ export const EmptyCart = styled.div`
   place-items: center;
   border: 1px solid ${(props) => props.theme["yellow-dark"]};
   border-radius: 6px;
+  width: 100%;
 
   a {
     font-size: 1.4rem;
-  }
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media (min-width: 1440px) {
-    width: 100%;
   }
 `;
