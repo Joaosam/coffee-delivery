@@ -1,5 +1,8 @@
 import axios from "axios";
+import { useContext } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import { toast } from "react-toastify";
+import { BuyContext } from "../../../../contexts/BuyContext";
 
 import { InputForm } from "../InputForm";
 import { InputMask } from "../InputMask";
@@ -12,6 +15,7 @@ interface ErrorType {
 }
 
 export function AdressForm() {
+  const { theme } = useContext(BuyContext);
   const { register, formState, watch, control, setValue } = useFormContext();
 
   const currentCep = watch("cep");
@@ -22,6 +26,13 @@ export function AdressForm() {
     axios
       .get(`https://viacep.com.br/ws/${currentCep}/json/`)
       .then((response) => {
+        if (response.data.erro) {
+          toast.error("CEP inválido", {
+            style: { fontSize: "1.4rem" },
+            theme: theme ? "light" : "dark",
+            autoClose: 2000,
+          });
+        }
         setValue("street", response.data.logradouro);
         setValue("neighborhood", response.data.bairro);
         setValue("city", response.data.localidade);
