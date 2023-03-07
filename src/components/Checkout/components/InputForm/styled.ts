@@ -30,4 +30,8 @@ export const InputStyledContainer = styled.input<InputStyledContainerProps>`
   &:disabled {
     cursor: not-allowed;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+  }
 `;
