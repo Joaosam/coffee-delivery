@@ -15,13 +15,13 @@ import {
 } from "./styled";
 import { CircleWavyWarning, ShoppingCart } from "phosphor-react";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { BuyContext } from "../../../../contexts/BuyContext";
+import { useBuyContext } from "../../../../contexts/BuyContext";
 import { InputNumberCoffe } from "../../../InputNumberCoffee";
 
 export function CoffeList() {
-  const { data } = useContext(BuyContext);
+  const { data } = useBuyContext();
   const [activeFilter, setActiveFilter] = useState([] as number[]);
   const [dataList, setDataList] = useState(data);
 

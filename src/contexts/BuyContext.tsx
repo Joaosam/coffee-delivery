@@ -2,12 +2,13 @@ import {
   createContext,
   ReactNode,
   useCallback,
+  useContext,
   useEffect,
   useState,
 } from "react";
 import data from ".././components/Home/data.json";
 
-interface BuyContextData {
+export interface BuyContextData {
   totalProducts: Coffee[];
   data: typeof data;
   currentIP: string;
@@ -189,4 +190,8 @@ export function BuyContextProvider({
       {children}
     </BuyContext.Provider>
   );
+}
+
+export function useBuyContext() {
+  return useContext(BuyContext);
 }

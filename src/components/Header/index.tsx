@@ -8,12 +8,11 @@ import {
   NavBar,
 } from "./style";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { BuyContext } from "../../contexts/BuyContext";
+import { useBuyContext } from "../../contexts/BuyContext";
 import { GetLocalization } from "./components/GetLocalization";
 
 export function Header() {
-  const { totalProducts } = useContext(BuyContext);
+  const { totalProducts } = useBuyContext();
   const totalQuantity = totalProducts.reduce(
     (accumulator, currentItem) => accumulator + currentItem.quantity,
     0
@@ -31,7 +30,7 @@ export function Header() {
             <Cart>
               {totalProducts.length !== 0 && (
                 <CartNotification>
-                  <span>{totalQuantity}</span>
+                  <span data-testid="spanNotification">{totalQuantity}</span>
                 </CartNotification>
               )}
               <ShoppingCart weight="fill" size={22} />

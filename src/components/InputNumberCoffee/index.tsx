@@ -1,6 +1,6 @@
 import { Minus, Plus } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
-import { BuyContext } from "../../contexts/BuyContext";
+import { useEffect, useState } from "react";
+import { useBuyContext } from "../../contexts/BuyContext";
 
 import { Wrapper } from "./styled";
 
@@ -22,7 +22,7 @@ export function InputNumberCoffe({
     handleAddProductToCart,
     handleDecreasesCartProducts,
     handleRemoveCartProducts,
-  } = useContext(BuyContext);
+  } = useBuyContext();
   const [quantityCoffee, setQuantityCoffee] = useState(0);
 
   useEffect(() => {
