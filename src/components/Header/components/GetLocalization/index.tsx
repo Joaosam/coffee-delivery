@@ -12,14 +12,10 @@ export function GetLocalization() {
   const getLocalization = useGetLocalization();
 
   useEffect(() => {
-    axios
-      .get(`https://api.ipify.org?format=json`)
-      .then((response) => {
-        setCurrentIP(response.data.ip);
-      })
-      .finally(() => {
-        setLoading(!loading);
-      });
+    axios.get(`https://api.ipify.org?format=json`).then((response) => {
+      setCurrentIP(response.data.ip);
+    });
+    setLoading(!loading);
 
     setTimeout(() => {
       getLocalization();
