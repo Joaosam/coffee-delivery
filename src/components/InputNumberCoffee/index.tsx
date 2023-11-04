@@ -26,7 +26,7 @@ export function InputNumberCoffe({
   const [quantityCoffee, setQuantityCoffee] = useState(0);
 
   useEffect(() => {
-    totalProducts.filter((item) => {
+    totalProducts?.filter((item) => {
       if (item.id === id) {
         setQuantityCoffee(item.quantity);
       }
@@ -42,6 +42,7 @@ export function InputNumberCoffe({
   return (
     <Wrapper>
       <Minus
+        data-testid="minus"
         size={14}
         className="minus"
         onClick={() => handleDecreasesCartProducts(id)}
@@ -52,6 +53,7 @@ export function InputNumberCoffe({
         onChange={(e) => e.target.value}
       />
       <Plus
+        data-testid="plus"
         onClick={() => handleAddProductToCart(id, name, image, price)}
         size={14}
         className="plus"

@@ -10,7 +10,7 @@ jest.mock("react-spinners", () => ({
 
 describe("GetLocalization component", () => {
   beforeEach(() => {
-    (useBuyContext as unknown as jest.Mock).mockImplementation(() => ({
+    (useBuyContext as jest.Mock).mockImplementation(() => ({
       loading: false,
       setCurrentIP: jest.fn(),
       setLoading: jest.fn(),
@@ -25,7 +25,7 @@ describe("GetLocalization component", () => {
   });
 
   it("should render without error with loading true", () => {
-    (useBuyContext as unknown as jest.Mock).mockImplementation(() => ({
+    (useBuyContext as jest.Mock).mockImplementation(() => ({
       loading: true,
       setLoading: jest.fn(),
       setCurrentIP: jest.fn(),

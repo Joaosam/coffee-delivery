@@ -66,6 +66,7 @@ export function CoffeList() {
         <TagsCoffe>
           {wrapperList.map((tag) => (
             <WrapperList
+              data-testid={`wrapperList-${tag.id}`}
               key={tag.id}
               onClick={() => handleListFiltered(tag.id)}
             >
