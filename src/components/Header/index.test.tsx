@@ -8,7 +8,7 @@ jest.mock("../../contexts/BuyContext");
 
 describe("Header component", () => {
   beforeEach(() => {
-    (useBuyContext as unknown as jest.Mock).mockImplementation(() => ({
+    (useBuyContext as jest.Mock).mockImplementation(() => ({
       totalProducts: [
         {
           id: 1,
@@ -19,6 +19,7 @@ describe("Header component", () => {
         },
       ],
       setLoading: jest.fn(),
+      setCurrentIP: jest.fn(),
     }));
   });
   afterEach(() => {
@@ -35,9 +36,10 @@ describe("Header component", () => {
   });
 
   it("should be able render without notifications", () => {
-    (useBuyContext as unknown as jest.Mock).mockImplementation(() => ({
+    (useBuyContext as jest.Mock).mockImplementation(() => ({
       totalProducts: [],
       setLoading: jest.fn(),
+      setCurrentIP: jest.fn(),
     }));
     render(
       <MemoryRouter>
